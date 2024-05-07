@@ -9,7 +9,7 @@ export function Navigation() {
                 </h1>
             </Link>
             <button className="bg-green-800 px-3 py-2 rounded-lg mb-3 mt-3"><Link to="/tasks-create"><h1 className="font-bold text-1xl">
-                + Crear Tarea
+                + Nueva Tarea
             </h1> </Link></button>
             
         </div>
