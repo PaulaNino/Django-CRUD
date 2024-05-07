@@ -30,7 +30,7 @@ export function TasksFormPage() {
       toast.success('Tarea creada exitosamente', {
         position: "bottom-right",
         style: {
-          background: "#101010",
+          background: "#3f3f46",
           color: "#fff",
           fontFamily: "Helvetica",
           height: "40px"
@@ -81,7 +81,7 @@ export function TasksFormPage() {
                         toast.success('Tarea eliminada exitosamente', {
                             position: "bottom-right",
                             style: {
-                                background: "#101010",
+                                background: "#3f3f46",
                                 color: "#fff",
                                 fontFamily: "Helvetica",
                                 height: "40px"
