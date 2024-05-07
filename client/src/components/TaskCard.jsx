@@ -5,7 +5,7 @@ export function TaskCard({task}) {
     const navigate = useNavigate()
     return(
         <div 
-            className="bg-sky-950 p-3 hover:bg-zinc-900 hover:cursor-pointer"
+            className="bg-sky-950 p-3 hover:bg-zinc-900 hover:cursor-pointer rounded-lg "
             
             onClick={() => {
                 navigate(`/tasks/${task.id}`)

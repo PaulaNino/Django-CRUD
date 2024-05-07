@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast'
 
 export function TasksFormPage() {
   const { register, handleSubmit, formState:
-    {errors},
+    { errors },
     setValue
   } = useForm()
 
@@ -25,7 +25,7 @@ export function TasksFormPage() {
           height: "40px"
         }
       })
-    }else {
+    } else {
       await createTask(data)
       toast.success('Tarea creada exitosamente', {
         position: "bottom-right",
@@ -50,56 +50,53 @@ export function TasksFormPage() {
       }
     }
     loadTask()
-   
-  })
+
+  }) 
 
   return (
     <div className="max-w-xl mx-auto ">
-  <form onSubmit={onSubmit}>
-    <input 
-      type="text" 
-      placeholder="Título"
-      {...register("title", { required: true })}
-      className="bg-zinc-700 p-3 rounded-lg block w-full mb-1" 
-    />
-    {errors.title && <span className='text-red-500'>Este campo es requerido</span>}
+    <form onSubmit={onSubmit}>
+        <input type="text" placeholder="Título"
+            {...register("title", { required: true })}
+            className="bg-zinc-700 p-3 rounded-lg block w-full mb-3" />
+        {errors.title && <span className='text-red-500 mt-1'>Este campo es requerido</span>}
 
-    <textarea 
-      rows="3" 
-      placeholder="Descripción"
-      {...register("description", { required: true })} 
-      className="bg-zinc-700 p-3 rounded-lg block w-full mb-1 mt-5"
-    />
-    {errors.description && <span className="text-red-500">Este campo es requerido</span>}
+        <textarea rows="3" placeholder="Descripción"
+            {...register("description", { required: true })}
+            className="bg-zinc-700 p-3 rounded-lg block w-full mb-3 mt-5">
+        </textarea>
+        {errors.description && <span className='text-red-500 mt-1'>Este campo es requerido</span>}
 
-    <div className="flex justify-between mt-3">
-      <button className="bg-blue-900  p-3 rounded-lg block w-1/2">Guardar</button>
-      {params.id && (
-        <button  
-          className="bg-red-700 p-3 rounded-lg w-1/2 ml-3"
-          onClick={async () => {
-            const accepted = window.confirm('¿Está seguro de eliminar esta tarea?');
-            if (accepted) {
-              await deleteTask(params.id);
-              toast.success('Tarea eliminada exitosamente', {
-                position: "bottom-right",
-                style: {
-                  background: "#101010",
-                  color: "#fff",
-                  fontFamily: "Helvetica",
-                  height: "40px"
-                }
-              });
-              navigate("/tasks");
-            }
-          }}
-        >
-          Eliminar
-        </button>
-      )}
-    </div>
-  </form>
-</div>
+        <button className="bg-blue-900  p-3 rounded-lg block w-full mt-5">Guardar</button>
+    </form>
+
+
+    {params.id && (
+        <div className="flex justify-end ">
+            <button className="bg-red-700 p-3 rounded-lg w-full mt-3"
+                onClick={async () => {
+                    const accepted = window.confirm('¿Esta seguro de eliminar esta tarea?')
+                    if (accepted) {
+                        await deleteTask(params.id)
+                        toast.success('Tarea eliminada exitosamente', {
+                            position: "bottom-right",
+                            style: {
+                                background: "#101010",
+                                color: "#fff",
+                                fontFamily: "Helvetica",
+                                height: "40px"
+                            }
+                        })
+                        navigate("/tasks")
+                    }
+                }}> Eliminar </button>
+        </div>
+    )
+    }
+</div > 
+
+
+
 
   )
 }
